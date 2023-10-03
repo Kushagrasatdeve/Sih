@@ -1,6 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Box from "@mui/joy/Box";
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { TextField, Button } from '@mui/material'
-import CloudUploadIcon from '@mui/icons-material'
+
 
 
 const Form = () => {
@@ -25,6 +28,11 @@ const Form = () => {
         setFile(event.target.files[0]);
       }
 
+      const handleFileUpload = () => {
+        console.log(file);
+        setFile(null);
+      }
+
       const handleSubmit = (event) => {
         event.preventDefault();
         
@@ -35,23 +43,30 @@ const Form = () => {
         setFile(null);
       }
   return (
-    <div>
+    <Box m={3}>
        <form onSubmit={handleSubmit}>
         <TextField
           label="State"
           value={state}
+          sx={{mb: 3}}
+          fullWidth
+          width={25}
           onChange={handleStateChange}
           required
         />
         <TextField
           label="City"
           value={city}
+          sx={{mb: 3}}
+          fullWidth
           onChange={handleCityChange}
           required
         />
         <TextField
           label="School Name"
           value={schoolName}
+          sx={{mb: 3}}
+          fullWidth
           onChange={handleSchoolNameChange}
           required
         />
@@ -66,19 +81,21 @@ const Form = () => {
           <label htmlFor="file-upload">
             <Button
               variant="contained"
-              color="default"
               component="span"
-              startIcon={<CloudUploadIcon />}
+              onClick={handleFileUpload}
+              startIcon={<FileUploadIcon/>}
             >
               Upload File
             </Button>
           </label>
         </div>
-        <Button type="submit" variant="contained" color="primary">
+        <br/>
+        <Button type="submit" variant="contained" color="primary"
+        endIcon={<KeyboardArrowRightIcon/>}>
           Submit
         </Button>
       </form>
-    </div>
+    </Box>
   )
 }
 

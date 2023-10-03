@@ -1,11 +1,12 @@
 import React from 'react'
 import Form from './Form'
-// import './App.css'
+// import ExampleNavigationMenu from './Navbar'
+import './App.css'
 
 function App() {
 
   return (
-      <Form />
+    <><Form /></>
   )
 }
 
